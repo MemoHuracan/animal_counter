@@ -43,7 +43,12 @@ class _AnimalCounterState extends State<AnimalCounter> {
   }
 
   void increment() => animateCountChange(() => _count++);
-  void decrement() => animateCountChange(() => _count--);
+  void decrement() =>
+      animateCountChange(() {
+        if (_count > 0) {
+          _count--;
+        }
+      });
   void reset() => animateCountChange(() => _count = 0);
   
 
