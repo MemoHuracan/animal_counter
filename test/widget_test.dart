@@ -27,4 +27,15 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+
+  testWidgets('Counter does not go below zero', (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+
+    // Attempt to decrement below zero.
+    await tester.tap(find.byIcon(Icons.remove));
+    await tester.pump();
+
+    // Counter should remain at zero.
+    expect(find.text('0'), findsOneWidget);
+  });
 }
